@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryLighter">#b2dfdb</color>
+    <color name="colorPrimaryLight">#4db6ac</color>
+    <color name="colorPrimary">#01ceb8</color>
+    <color name="colorPrimaryDark">#00796b</color>
+    <color name="colorPrimaryDarker">#004d40</color>
+    <color name="colorAccentLighter">#ff80ab</color>
+    <color name="colorAccent">#000</color>
+    <color name="colorAccentDarker">#f50057</color>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+
+    <color name="colorBackgroundLauncher">#4accd7</color>
+    <color name="blue">#00abea</color>
+    <color name="black">#000000</color>
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+</resources>

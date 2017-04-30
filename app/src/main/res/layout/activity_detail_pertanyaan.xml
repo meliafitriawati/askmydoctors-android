@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:layout_width="wrap_content">
+    <LinearLayout
+        android:id="@+id/activity_detail_pertanyaan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:paddingTop="10dp"
+        tools:context="com.askmydoctors.askmydoctors.views.DetailPertanyaanActivity"
+        android:orientation="vertical">
+        <TextView
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivJudulPertanyaan"
+            android:textSize="16dp"
+            />
+        <RelativeLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/ivGambarProfil"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/nama"
+                android:textSize="16dp"
+                android:layout_toRightOf="@id/ivGambarProfil"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tanggal_views"
+                android:textSize="14sp"
+                android:textColor="@color/aluminum"
+                android:layout_below="@id/nama"
+                android:layout_toRightOf="@id/ivGambarProfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <View style="@style/Divider"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivDetilPertanyaan"
+           />
+        <View style="@style/Divider"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Komentar"/>
+
+        <EditText
+            android:id="@+id/etKomentar"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:hint="Tulis Komentar"
+            android:textSize="16dp"
+            />
+
+        <ListView
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:id="@+id/KomentarPertanyaan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </LinearLayout>
+
+</ScrollView>
