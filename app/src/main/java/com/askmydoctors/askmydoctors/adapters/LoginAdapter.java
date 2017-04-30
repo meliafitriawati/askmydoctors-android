@@ -8,6 +8,8 @@ import com.askmydoctors.askmydoctors.views.ArtikelFragment;
 import com.askmydoctors.askmydoctors.views.ChatFragment;
 import com.askmydoctors.askmydoctors.views.DiskusiFragment;
 import com.askmydoctors.askmydoctors.views.DokterFragment;
+import com.askmydoctors.askmydoctors.views.LoginDokterFragment;
+import com.askmydoctors.askmydoctors.views.LoginUserFragment;
 
 /**
  * Created by meliafitriawati on 4/29/2017.
@@ -24,10 +26,10 @@ public class LoginAdapter  extends FragmentStatePagerAdapter {
         Fragment frag=null;
         switch (position){
             case 0:
-                frag=new ChatFragment();
+                frag=new LoginUserFragment();
                 break;
             case 1:
-                frag=new DiskusiFragment();
+                frag=new LoginDokterFragment();
                 break;
         }
         return frag;
@@ -35,7 +37,7 @@ public class LoginAdapter  extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 2;
     }
 
     @Override
