@@ -4,7 +4,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:fillViewport="true"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.askmydoctors.askmydoctors.views.LoginUserFragment"
+tools:context="com.askmydoctors.askmydoctors.fragments.LoginUserFragment"
 android:scrollbars="none"
 android:orientation="vertical">
 <!--<ImageView-->
@@ -82,6 +82,16 @@ android:orientation="vertical">
             android:text="Login"
             android:textColor="@color/white"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLogin"
+            android:layout_marginTop="20dp"
+            android:id="@+id/toReg"
+            android:text="Belum memiliki akun? Daftar disini"
+            android:layout_centerInParent="true"
+           />
     </RelativeLayout>
 </LinearLayout>
 </FrameLayout>

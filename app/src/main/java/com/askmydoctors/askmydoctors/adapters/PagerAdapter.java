@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.askmydoctors.askmydoctors.views.ArtikelFragment;
-import com.askmydoctors.askmydoctors.views.ChatFragment;
-import com.askmydoctors.askmydoctors.views.DiskusiFragment;
-import com.askmydoctors.askmydoctors.views.DokterFragment;
+import com.askmydoctors.askmydoctors.fragments.ArtikelFragment;
+import com.askmydoctors.askmydoctors.fragments.ChatFragment;
+import com.askmydoctors.askmydoctors.fragments.DiskusiFragment;
+import com.askmydoctors.askmydoctors.fragments.DokterFragment;
 
 /**
  * Created by meliafitriawati on 4/1/2017.

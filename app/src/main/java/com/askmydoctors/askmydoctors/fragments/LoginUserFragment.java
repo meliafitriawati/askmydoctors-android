@@ -1,4 +1,4 @@
-package com.askmydoctors.askmydoctors.views;
+package com.askmydoctors.askmydoctors.fragments;
 
 
 import android.app.ProgressDialog;
@@ -14,11 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.askmydoctors.askmydoctors.R;
 import com.askmydoctors.askmydoctors.utils.Config;
 import com.askmydoctors.askmydoctors.utils.ServiceClient;
+import com.askmydoctors.askmydoctors.views.MainActivity;
+import com.askmydoctors.askmydoctors.views.RegisterActivity;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.mikepenz.iconics.context.IconicsContextWrapper;
@@ -35,6 +39,7 @@ public class LoginUserFragment extends Fragment {
     EditText email, password;
     String inputEmail, inputPassword;
     Button btnLogin;
+    TextView toReg;
     private ProgressDialog pDialog;
 
     public LoginUserFragment() {
@@ -50,7 +55,7 @@ public class LoginUserFragment extends Fragment {
         email = (EditText) view.findViewById(R.id.usernamePengguna);
         password = (EditText) view.findViewById(R.id.passwordPengguna);
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
-
+        toReg = (TextView) view.findViewById(R.id.toReg);
         pDialog = new ProgressDialog(getActivity());
         pDialog.setCancelable(false);
 
@@ -70,16 +75,25 @@ public class LoginUserFragment extends Fragment {
 
             }
         });
+
+        toReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), RegisterActivity.class));
+            }
+        });
         return view;
     }
 
     private void doLogin(String inputEmail, String inputPassword) {
         pDialog.setMessage("Logging in ...");
         showDialog();
+        String token = FirebaseInstanceId.getInstance().getToken();
 
         RequestParams params = new RequestParams();
         params.put("email", inputEmail);
         params.put("password", inputPassword);
+        params.put("token", token);
 
         String url = Config.URL + "user/login_user";
 
@@ -111,6 +125,13 @@ public class LoginUserFragment extends Fragment {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 hideDialog();
                 Toast.makeText(getActivity(), responseString, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                hideDialog();
+                Toast.makeText(getActivity(), "Can't reach server", Toast.LENGTH_SHORT).show();
             }
         });
     }

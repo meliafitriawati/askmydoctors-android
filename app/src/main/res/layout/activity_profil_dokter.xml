@@ -5,46 +5,185 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.askmydoctors.askmydoctors.views.ProfilDokterActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryLighter"
-            android:paddingTop="30dp"
-            android:paddingBottom="20dp"
             android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/ivGambarProfil"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"/>
-
-            <TextView
-                android:id="@+id/ivNamaDokter"
+            <RelativeLayout
+                android:id="@+id/RLsatu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dr. Indah Purnamasari"
-                android:textColor="@color/white"
-                android:textSize="17dp"
-                android:textAlignment="center" />
-            <TextView
-                android:id="@+id/ivSpesialisasi"
+                android:background="@color/colorPrimaryLighter"
+                android:paddingTop="30dp"
+                android:paddingBottom="20dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/ivGambarProfilDokter"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    android:layout_below="@id/ivGambarProfilDokter"
+                    android:id="@+id/ivNamaDokter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:textAlignment="center" />
+                <TextView
+                    android:layout_below="@id/ivNamaDokter"
+                    android:id="@+id/ivSpesialisasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:textAlignment="center"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/btnChat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Spesialisasi Gigi"
-                android:textColor="@color/white"
-                android:textSize="17dp"
-                android:textAlignment="center"/>
+                android:background="#c6e7c3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CHAT"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"
+                    android:padding="20dp"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tentang :"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/Tentang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <View style="@style/Divider"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pendidikan :"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/pendidikan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <View style="@style/Divider"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Klinik :"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/klinik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <View style="@style/Divider"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat :"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <View style="@style/Divider"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jadwal Klinik :"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/jadwal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <View style="@style/Divider"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </LinearLayout>
 </ScrollView>

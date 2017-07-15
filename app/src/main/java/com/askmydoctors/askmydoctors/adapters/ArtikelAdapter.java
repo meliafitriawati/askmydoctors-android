@@ -15,8 +15,10 @@ import com.askmydoctors.askmydoctors.R;
 import com.askmydoctors.askmydoctors.models.Artikel;
 import com.askmydoctors.askmydoctors.models.Chat;
 import com.askmydoctors.askmydoctors.models.Pertanyaan;
+import com.askmydoctors.askmydoctors.utils.Config;
 import com.askmydoctors.askmydoctors.views.DetailArtikel;
 import com.askmydoctors.askmydoctors.views.DetailPertanyaanActivity;
+import com.squareup.picasso.Picasso;
 
 import java.io.Console;
 import java.util.List;
@@ -57,6 +59,14 @@ public class ArtikelAdapter extends RecyclerView.Adapter<ArtikelAdapter.MyViewHo
         Artikel artikel = artikelList.get(position);
         holder.judul.setTag(artikel.getId());
         holder.judul.setText(artikel.getJudul());
+
+        //http://localhost/askmydoctors/assets/img/artikel/buah apel.jpg
+        String img = artikel.getImg();
+        String url_img = Config.URL_WEB + "assets/img/artikel/" + img;
+
+        Picasso.with(artikelContext)
+                .load(url_img)
+                .into(holder.foto_profil);
 
         holder.judul.setOnClickListener(new View.OnClickListener() {
             @Override

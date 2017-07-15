@@ -1,19 +1,21 @@
 package com.askmydoctors.askmydoctors.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by meliafitriawati on 4/1/2017.
  */
 
 public class Chat {
-    private String id, pengirim, detail, tanggal, image, spesialisasi;
+    private String id, pengirim, penerima, stat, tanggal;
 
-    public Chat(String id, String pengirim, String detail, String tanggal, String image, String spesialisasi) {
+    public Chat(String id, String pengirim, String penerima, String tanggal, String stat  ) {
         this.id = id;
         this.pengirim = pengirim;
-        this.detail = detail;
+        this.penerima = penerima;
+        this.stat = stat;
         this.tanggal = tanggal;
-        this.image = image;
-        this.spesialisasi = spesialisasi;
     }
 
     public String getId() {
@@ -32,12 +34,20 @@ public class Chat {
         this.pengirim = pengirim;
     }
 
-    public String getDetail() {
-        return detail;
+    public String getPenerima() {
+        return penerima;
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
+    public void setPenerima(String penerima) {
+        this.penerima = penerima;
+    }
+
+    public String getStat() {
+        return stat;
+    }
+
+    public void setStat(String stat) {
+        this.stat = stat;
     }
 
     public String getTanggal() {
@@ -48,19 +58,15 @@ public class Chat {
         this.tanggal = tanggal;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getSpesialisasi() {
-        return spesialisasi;
-    }
-
-    public void setSpesialisasi(String spesialisasi) {
-        this.spesialisasi = spesialisasi;
+    public static Chat fromJSONData(JSONObject json) {
+        try {
+            return new Chat(json.getString("id_chat"),
+                    json.getString("pengirim"),
+                    json.getString("penerima"),
+                    json.getString("tanggal"),
+                    json.getString("status"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }return null;
     }
 }

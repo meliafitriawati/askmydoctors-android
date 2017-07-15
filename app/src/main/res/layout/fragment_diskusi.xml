@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
-    tools:context="com.askmydoctors.askmydoctors.views.DiskusiFragment">
+    tools:context="com.askmydoctors.askmydoctors.fragments.DiskusiFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/spesialisasi_list"

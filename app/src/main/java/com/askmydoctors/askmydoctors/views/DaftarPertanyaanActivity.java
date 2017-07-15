@@ -1,12 +1,15 @@
 package com.askmydoctors.askmydoctors.views;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.askmydoctors.askmydoctors.R;
@@ -34,6 +37,8 @@ public class DaftarPertanyaanActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PertanyaanAdapter pertanyaanAdapter;
     String id_spesialisasi, url;
+    FloatingActionButton fab;
+    TextView noQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,13 @@ public class DaftarPertanyaanActivity extends AppCompatActivity {
             url = Config.URL + "diskusi/getPertanyaan/" + id_spesialisasi;
         }
 
+        noQuestion = (TextView) findViewById(R.id.noQuestion);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        String kode = Config.GetString(DaftarPertanyaanActivity.this,"kode");
+        if (kode.equals("2")){
+            fab.setVisibility(View.GONE);
+        }
 
         recyclerView = (RecyclerView) findViewById(R.id.daftarPertanyaan);
         pertanyaanAdapter = new PertanyaanAdapter(pertanyaanList);
@@ -68,7 +80,7 @@ public class DaftarPertanyaanActivity extends AppCompatActivity {
                         }
                         pertanyaanAdapter.notifyDataSetChanged();
                     } else {
-
+                        noQuestion.setVisibility(View.VISIBLE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -76,6 +88,14 @@ public class DaftarPertanyaanActivity extends AppCompatActivity {
             }
         });
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DaftarPertanyaanActivity.this, TambahPertanyaan.class);
+                i.putExtra("id_spesialisasi", id_spesialisasi);
+                startActivity(i);
+            }
+        });
 
         recyclerView.setAdapter(pertanyaanAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));

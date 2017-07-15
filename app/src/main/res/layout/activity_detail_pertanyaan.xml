@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:layout_width="wrap_content">
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/activity_detail_pertanyaan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,14 +22,15 @@
             android:textSize="16dp"
             />
         <RelativeLayout
+            android:id="@+id/RelLayout"
+            android:layout_below="@id/ivJudulPertanyaan"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <ImageView
-                android:id="@+id/ivGambarProfil"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivGambarProfilPer"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@mipmap/ic_launcher"
@@ -38,7 +39,7 @@
             <TextView
                 android:id="@+id/nama"
                 android:textSize="16dp"
-                android:layout_toRightOf="@id/ivGambarProfil"
+                android:layout_toRightOf="@id/ivGambarProfilPer"
                 android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -48,14 +49,17 @@
                 android:textSize="14sp"
                 android:textColor="@color/aluminum"
                 android:layout_below="@id/nama"
-                android:layout_toRightOf="@id/ivGambarProfil"
+                android:layout_toRightOf="@id/ivGambarProfilPer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <View style="@style/Divider"
+            android:id="@+id/divider"
+            android:layout_below="@+id/RelLayout"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
         <TextView
+            android:layout_below="@id/divider"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
@@ -65,15 +69,20 @@
             android:id="@+id/ivDetilPertanyaan"
            />
         <View style="@style/Divider"
+            android:id="@+id/divider2"
+            android:layout_below="@+id/ivDetilPertanyaan"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
         <TextView
+            android:id="@+id/lbl_komentar"
+            android:layout_below="@id/divider2"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Komentar"/>
 
         <EditText
+            android:layout_below="@id/lbl_komentar"
             android:id="@+id/etKomentar"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -83,13 +92,26 @@
             android:hint="Tulis Komentar"
             android:textSize="16dp"
             />
+        <Button
+            android:text="Kirim"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etKomentar"
+            android:id="@+id/btnKomentar"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            />
 
         <ListView
+            android:layout_below="@id/btnKomentar"
             android:paddingRight="5dp"
             android:paddingLeft="5dp"
             android:id="@+id/KomentarPertanyaan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
-    </LinearLayout>
+    </RelativeLayout>
 
 </ScrollView>

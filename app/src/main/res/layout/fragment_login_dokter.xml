@@ -4,7 +4,7 @@
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.askmydoctors.askmydoctors.views.LoginDokterFragment"
+    tools:context="com.askmydoctors.askmydoctors.fragments.LoginDokterFragment"
     android:scrollbars="none"
     android:orientation="vertical">
     <!--<ImageView-->

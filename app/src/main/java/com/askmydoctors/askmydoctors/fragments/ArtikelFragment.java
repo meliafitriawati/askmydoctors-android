@@ -1,8 +1,9 @@
-package com.askmydoctors.askmydoctors.views;
+package com.askmydoctors.askmydoctors.fragments;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +44,8 @@ public class ArtikelFragment extends Fragment {
     private RecyclerView recyclerView;
     private ArtikelAdapter artikelAdapter;
     String url_artikel = Config.URL + "artikel/getArtikel";
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+
     public ArtikelFragment() {
         // Required empty public constructor
     }
@@ -53,6 +56,21 @@ public class ArtikelFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_artikel, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.artikel_list);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh2);
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                viewArtikel();
+            }
+        });
+
+        viewArtikel();
+
+        return view;
+    }
+
+    private void viewArtikel() {
         artikelAdapter = new ArtikelAdapter(artikelList);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
@@ -83,7 +101,8 @@ public class ArtikelFragment extends Fragment {
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(artikelAdapter);
-        return view;
+        mSwipeRefreshLayout.setRefreshing(false);
     }
+
 
 }

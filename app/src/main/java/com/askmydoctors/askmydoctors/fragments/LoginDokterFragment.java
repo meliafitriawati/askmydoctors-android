@@ -1,4 +1,4 @@
-package com.askmydoctors.askmydoctors.views;
+package com.askmydoctors.askmydoctors.fragments;
 
 
 import android.app.ProgressDialog;
@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.askmydoctors.askmydoctors.R;
 import com.askmydoctors.askmydoctors.utils.Config;
 import com.askmydoctors.askmydoctors.utils.ServiceClient;
+import com.askmydoctors.askmydoctors.views.MainActivity;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -71,10 +73,12 @@ public class LoginDokterFragment extends Fragment {
     private void doLogin(String inputUsername, String inputPassword) {
         pDialog.setMessage("Logging in ...");
         showDialog();
+        String token = FirebaseInstanceId.getInstance().getToken();
 
         RequestParams params = new RequestParams();
         params.put("username", inputUsername);
         params.put("password", inputPassword);
+        params.put("token", token);
 
         String url = Config.URL + "user/login_dokter";
 
@@ -106,6 +110,13 @@ public class LoginDokterFragment extends Fragment {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 hideDialog();
                 Toast.makeText(getActivity(), responseString, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                hideDialog();
+                Toast.makeText(getActivity(), "Can't reach server", Toast.LENGTH_SHORT).show();
             }
         });
     }

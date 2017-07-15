@@ -4,15 +4,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.askmydoctors.askmydoctors.fragments.LoginDokterFragment;
-import com.askmydoctors.askmydoctors.fragments.LoginUserFragment;
+import com.askmydoctors.askmydoctors.fragments.ArtikelFragment;
+import com.askmydoctors.askmydoctors.fragments.ChatFragment;
+import com.askmydoctors.askmydoctors.fragments.DiskusiFragment;
 
 /**
- * Created by meliafitriawati on 4/29/2017.
+ * Created by meliafitriawati on 5/12/2017.
  */
 
-public class LoginAdapter  extends FragmentStatePagerAdapter {
-    public LoginAdapter(FragmentManager fm) {
+public class PagerAdapterDokter extends FragmentStatePagerAdapter {
+    public PagerAdapterDokter(FragmentManager fm) {
         super(fm);
     }
 
@@ -22,10 +23,13 @@ public class LoginAdapter  extends FragmentStatePagerAdapter {
         Fragment frag=null;
         switch (position){
             case 0:
-                frag=new LoginUserFragment();
+                frag=new ChatFragment();
                 break;
             case 1:
-                frag=new LoginDokterFragment();
+                frag=new DiskusiFragment();
+                break;
+            case 2:
+                frag=new ArtikelFragment();
                 break;
         }
         return frag;
@@ -33,7 +37,7 @@ public class LoginAdapter  extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -41,10 +45,13 @@ public class LoginAdapter  extends FragmentStatePagerAdapter {
         String title=" ";
         switch (position){
             case 0:
-                title="Pengguna";
+                title="Chat";
                 break;
             case 1:
-                title="Dokter";
+                title="Diskusi";
+                break;
+            case 2:
+                title="Artikel";
                 break;
         }
 

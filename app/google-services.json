@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "673291100450",
+    "firebase_url": "https://askmydoctors-fa489.firebaseio.com",
+    "project_id": "askmydoctors-fa489",
+    "storage_bucket": "askmydoctors-fa489.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673291100450:android:db2ca1661f026f58",
+        "android_client_info": {
+          "package_name": "com.askmydoctors.askmydoctors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673291100450-qopl78egp7a6j60gvc78ejamt9bit70r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKf9yOPsWPKI1FrBi96j9Uzq0W_SngFGE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

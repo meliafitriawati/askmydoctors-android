@@ -8,7 +8,7 @@ import org.json.JSONObject;
  */
 
 public class Artikel {
-    String id, judul, artikel, publisher, tanggal, views;
+    String id, judul, artikel, publisher, tanggal, views, img;
 
     public String getId() {
         return id;
@@ -58,7 +58,15 @@ public class Artikel {
         this.views = views;
     }
 
-    public Artikel(String id, String judul, String artikel, String publisher, String tanggal, String views) {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public Artikel(String id, String judul, String artikel, String publisher, String tanggal, String views, String img) {
 
         this.id = id;
         this.judul = judul;
@@ -66,17 +74,20 @@ public class Artikel {
         this.publisher = publisher;
         this.tanggal = tanggal;
         this.views = views;
+        this.img = img;
     }
 
-    public Artikel (String id, String judul){
+    public Artikel (String id, String judul, String img){
         this.id = id;
         this.judul = judul;
+        this.img = img;
     }
 
     public static Artikel fromJSONData(JSONObject json) {
         try {
             return new Artikel(json.getString("id_artikel"),
-                    json.getString("judul"));
+                    json.getString("judul"),
+                    json.getString("img_tumb"));
         } catch (JSONException e) {
             e.printStackTrace();
         }return null;

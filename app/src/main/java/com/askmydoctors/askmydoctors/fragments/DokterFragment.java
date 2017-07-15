@@ -1,4 +1,4 @@
-package com.askmydoctors.askmydoctors.views;
+package com.askmydoctors.askmydoctors.fragments;
 
 
 import android.os.Bundle;
@@ -13,12 +13,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.askmydoctors.askmydoctors.R;
+import com.askmydoctors.askmydoctors.adapters.DokterAdapter;
 import com.askmydoctors.askmydoctors.adapters.SpesialisasiAdapter;
+import com.askmydoctors.askmydoctors.models.Dokter;
 import com.askmydoctors.askmydoctors.models.Spesialisasi;
 import com.askmydoctors.askmydoctors.utils.Config;
 import com.askmydoctors.askmydoctors.utils.DividerItemDecoration;
 import com.askmydoctors.askmydoctors.utils.ServiceClient;
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -34,44 +35,42 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DiskusiFragment extends Fragment {
-    private List<Spesialisasi> spesialisasiList = new ArrayList<>();
+public class DokterFragment extends Fragment {
+    private List<Dokter> dokterList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private SpesialisasiAdapter spesialisasiAdapter;
-    String url_kategori = Config.URL + "diskusi/getKategori";
+    private DokterAdapter dokterAdapter;
+    String url_dokter = Config.URL + "dokter/getDokter";
 
-    public DiskusiFragment() {
+    public DokterFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_diskusi, container, false);
+        View view = inflater.inflate(R.layout.fragment_dokter, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.spesialisasi_list);
-        spesialisasiAdapter = new SpesialisasiAdapter(spesialisasiList);
+        recyclerView = (RecyclerView) view.findViewById(R.id.daftarDokter);
+        dokterAdapter = new DokterAdapter(dokterList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         RequestParams params = new RequestParams();
         params.put("example", "ex");
-        Log.d("URL",String.valueOf(url_kategori));
-        ServiceClient.get(url_kategori, params, new JsonHttpResponseHandler() {
+        Log.d("URL",String.valueOf(url_dokter));
+        ServiceClient.get(url_dokter, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 try {
                     if (response.getInt("status") == 1) {
-                        JSONArray kategoriArray = response.getJSONArray("kategori");
-                        spesialisasiAdapter.getList().clear();
+                        JSONArray kategoriArray = response.getJSONArray("dokter");
+                        dokterAdapter.getList().clear();
                         for (int i = 0; i < kategoriArray.length(); i++) {
-                            spesialisasiAdapter.addSpesialisasi(Spesialisasi.fromJSONData(kategoriArray.getJSONObject(i)));
+                            dokterAdapter.addDokter(Dokter.fromJSONData(kategoriArray.getJSONObject(i)));
                         }
-                        spesialisasiAdapter.notifyDataSetChanged();
-                        Toast.makeText(getActivity(), response.getString("sukses"), Toast.LENGTH_LONG).show();
+                        dokterAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getActivity(), "Failed to load", Toast.LENGTH_LONG).show();
                     }
@@ -81,31 +80,10 @@ public class DiskusiFragment extends Fragment {
             }
         });
 
-        recyclerView.setAdapter(spesialisasiAdapter);
+        recyclerView.setAdapter(dokterAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+
         return view;
-    }
-
-
-    private void prepareChatData() {
-        Spesialisasi spesialisasi = new Spesialisasi("1", "Konsultasi Gigi");
-        spesialisasiList.add(spesialisasi);
-
-        spesialisasi = new Spesialisasi("1", "Konsultasi Gigi");
-        spesialisasiList.add(spesialisasi);
-
-        spesialisasi = new Spesialisasi("1", "Konsultasi Gigi");
-        spesialisasiList.add(spesialisasi);
-
-        spesialisasi = new Spesialisasi("1", "Konsultasi Gigi");
-        spesialisasiList.add(spesialisasi);
-
-        spesialisasi = new Spesialisasi("1", "Konsultasi Gigi");
-        spesialisasiList.add(spesialisasi);
-
-
-        spesialisasiAdapter.notifyDataSetChanged();
-
     }
 
 }

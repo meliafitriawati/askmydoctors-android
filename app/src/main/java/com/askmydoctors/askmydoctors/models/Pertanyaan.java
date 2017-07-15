@@ -8,22 +8,24 @@ import org.json.JSONObject;
  */
 
 public class Pertanyaan {
-    String id, judul, pertanyaan, spesialisasi, tanggal, pengirim;
+    String id, judul, pertanyaan, spesialisasi, tanggal, pengirim, img;
 
-    public Pertanyaan(String id, String judul, String pertanyaan, String tanggal) {
+    public Pertanyaan(String id, String judul, String pertanyaan, String tanggal, String img) {
         this.id = id;
         this.judul = judul;
         this.pertanyaan = pertanyaan;
         this.tanggal = tanggal;
+        this.img = img;
     }
 
-    public Pertanyaan(String id, String judul, String pertanyaan, String spesialisasi, String tanggal, String pengirim) {
+    public Pertanyaan(String id, String judul, String pertanyaan, String spesialisasi, String tanggal, String pengirim, String img) {
         this.id = id;
         this.judul = judul;
         this.pertanyaan = pertanyaan;
         this.spesialisasi = spesialisasi;
         this.tanggal = tanggal;
         this.pengirim = pengirim;
+        this.img = img;
     }
 
     public String getId() {
@@ -74,12 +76,21 @@ public class Pertanyaan {
         this.pengirim = pengirim;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public static Pertanyaan fromJSONData(JSONObject json) {
         try {
             return new Pertanyaan(json.getString("id_diskusi"),
                     json.getString("judul"),
                     json.getString("pertanyaan"),
-                    json.getString("waktu_kirim"));
+                    json.getString("waktu_kirim"),
+                    json.getString("img_user"));
         } catch (JSONException e) {
             e.printStackTrace();
         }return null;

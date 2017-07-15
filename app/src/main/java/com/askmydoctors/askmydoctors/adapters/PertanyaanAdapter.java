@@ -3,6 +3,7 @@ package com.askmydoctors.askmydoctors.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,14 @@ import com.askmydoctors.askmydoctors.R;
 import com.askmydoctors.askmydoctors.models.Chat;
 import com.askmydoctors.askmydoctors.models.Pertanyaan;
 import com.askmydoctors.askmydoctors.models.Spesialisasi;
+import com.askmydoctors.askmydoctors.utils.Config;
 import com.askmydoctors.askmydoctors.views.DaftarPertanyaanActivity;
 import com.askmydoctors.askmydoctors.views.DetailPertanyaanActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by meliafitriawati on 4/3/2017.
@@ -27,6 +32,7 @@ public class PertanyaanAdapter extends RecyclerView.Adapter<PertanyaanAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView judul, pertanyaan, tanggal;
+        public CircleImageView img;
 
         public MyViewHolder(View view) {
             super(view);
@@ -34,6 +40,7 @@ public class PertanyaanAdapter extends RecyclerView.Adapter<PertanyaanAdapter.My
             judul = (TextView) view.findViewById(R.id.ivJudul);
             pertanyaan = (TextView) view.findViewById(R.id.ivPertanyaan);
             tanggal = (TextView) view.findViewById(R.id.ivTanggal);
+            img = (CircleImageView) view.findViewById(R.id.ivPP);
         }
 
     }
@@ -66,7 +73,15 @@ public class PertanyaanAdapter extends RecyclerView.Adapter<PertanyaanAdapter.My
             holder.pertanyaan.setText(pertanyaan.getPertanyaan());
         }
 
-        holder.tanggal.setText("4/4/17");
+        holder.tanggal.setText(pertanyaan.getTanggal());
+
+        String img = pertanyaan.getImg();
+        String url_img = Config.URL_WEB + "assets/img/user/" + img;
+        Log.d("url_img", url_img);
+
+        Picasso.with(context)
+                .load(url_img)
+                .into(holder.img);
 
         holder.pertanyaan.setOnClickListener(new View.OnClickListener() {
             @Override
